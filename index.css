@@ -1,0 +1,112 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: 0;
+}
+
+body {
+    padding: 20px 20px 0px 20px;
+    gap: 20px;
+    background: #FAFAFA;
+}
+
+.add-button {
+    display: flex;
+    width: 272px;
+    padding: 10px 20px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 20px;
+    background: #AFEDA0;
+    cursor: pointer;
+}
+
+.add-button span {
+    color: #000;
+    font-family: Sansita;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.categorys {
+    margin-top: 20px;
+    display: flex;
+    align-items: flex-start;
+    align-content: flex-start;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.category {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 600px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 5.3px 0px rgba(0, 0, 0, 0.20);
+}
+
+.category .title {
+    display: flex;
+    padding: 24px 20px;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+
+    border-radius: 20px 20px 0px 0px;
+    background: #E9FFDF;
+}
+
+.category .jobs {
+    width: 100%;
+    display: flex;
+    min-height: 200px;
+    padding: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+
+    border-radius: 0px 0px 20px 20px;
+    border: 1px solid #C2C2C2;
+    background: #FFF;
+}
+
+.category .jobs .job {
+    display: flex;
+    width: 570px;
+    padding: 10px 15px;
+    justify-content: space-between;
+    align-items: center;
+
+    border-radius: 20px;
+    background: #E9FFDF;
+}
+
+.job .check-box {
+    display: flex;
+    height: 20px;
+    width: 20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid #CCC9C9;
+    background: #FFF;
+}
+
+.job h4 {
+    color: #000;
+    font-family: Sansita;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.job.checked h4 {
+    text-decoration-line: line-through;
+}
