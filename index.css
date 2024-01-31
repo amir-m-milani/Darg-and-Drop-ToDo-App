@@ -131,17 +131,19 @@ body {
     text-decoration-line: line-through;
 }
 
-/* Modal */
-.modal {
-    display: flex;
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
+.overlay {
     background: rgba(0, 0, 0, 0.20);
     backdrop-filter: blur(2.5px);
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    z-index: 99;
+    top: 0;
 }
 
-.modal .main {
+/* Modal */
+
+.modal_ .main {
     display: flex;
     width: 600px;
     height: 350px;
@@ -151,12 +153,21 @@ body {
     align-items: center;
     gap: 20px;
 
+    z-index: 100;
     position: absolute;
     left: 420px;
     top: 80px;
 
     border-radius: 20px;
     background: #FFF;
+
+    transition: all 0.3s ease 0s;
+
+    transform: translateY(calc(-100% - 80px));
+}
+
+.main.open {
+    transform: translateY(0);
 }
 
 .main h3 {
@@ -212,7 +223,7 @@ body {
     line-height: normal;
 }
 
-.modal .close {
+.modal_ .close {
     position: absolute;
     right: 29px;
     top: 27px;
