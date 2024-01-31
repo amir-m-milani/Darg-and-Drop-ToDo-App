@@ -9,6 +9,7 @@ body {
     padding: 20px 20px 0px 20px;
     gap: 20px;
     background: #FAFAFA;
+    position: relative;
 }
 
 .add-button {
@@ -41,6 +42,11 @@ body {
 }
 
 .category {
+
+    --_background_Later: #E9FFDF;
+    --_background_Future: #DFFDFF;
+    --_background_Today: #FFF8DF;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -50,6 +56,22 @@ body {
     box-shadow: 0px 0px 5.3px 0px rgba(0, 0, 0, 0.20);
 }
 
+#Later .title,
+#Later .job {
+    background-color: var(--_background_Later);
+}
+
+#Future .title,
+#Future .job {
+    background-color: var(--_background_Future);
+}
+
+#Today .title,
+#Today .job {
+    background-color: var(--_background_Today);
+}
+
+
 .category .title {
     display: flex;
     padding: 24px 20px;
@@ -58,7 +80,6 @@ body {
     align-items: center;
 
     border-radius: 20px 20px 0px 0px;
-    background: #E9FFDF;
 }
 
 .category .jobs {
@@ -83,7 +104,6 @@ body {
     align-items: center;
 
     border-radius: 20px;
-    background: #E9FFDF;
 }
 
 .job .check-box {
@@ -109,4 +129,92 @@ body {
 
 .job.checked h4 {
     text-decoration-line: line-through;
+}
+
+/* Modal */
+.modal {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.20);
+    backdrop-filter: blur(2.5px);
+}
+
+.modal .main {
+    display: flex;
+    width: 600px;
+    height: 350px;
+    padding: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    position: absolute;
+    left: 420px;
+    top: 80px;
+
+    border-radius: 20px;
+    background: #FFF;
+}
+
+.main h3 {
+    width: 397px;
+    height: 66px;
+    flex-shrink: 0;
+
+    color: #000;
+    font-family: Sansita;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.main input {
+    display: flex;
+    width: 397px;
+    height: 90px;
+    padding: 10px;
+    align-items: center;
+    flex-shrink: 0;
+
+    border-radius: 20px;
+    border: 1px solid #898989;
+    color: #000;
+    font-family: Sansita;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.main .submit-button {
+    display: flex;
+    width: 338px;
+    height: 70px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    cursor: pointer;
+    border-radius: 20px;
+    background: #08A20E;
+}
+
+.submit-button span {
+    color: #FFF;
+    text-align: center;
+    font-family: Sansita;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.modal .close {
+    position: absolute;
+    right: 29px;
+    top: 27px;
+    cursor: pointer;
 }
