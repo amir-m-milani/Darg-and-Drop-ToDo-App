@@ -4,6 +4,7 @@ const insertJobButton = document.querySelector(".submit-button");
 const jobs = document.querySelectorAll(".job");
 const jobsConatainers = document.querySelectorAll(".jobs");
 const checkBoxes = document.querySelectorAll(".check-box");
+const categorys = document.querySelectorAll(".category");
 
 addButton.addEventListener("click", OpenModal);
 closeModal.addEventListener("click", CloseModal);
@@ -79,3 +80,33 @@ function AddJob() {
     CloseModal();
     // console.log(jobTitle);
 }
+
+// the objet format for saving to database
+/*
+let save =
+{
+    "Today": [
+        { "title1": true },
+        { "title2": false }
+    ]
+};
+*/
+function CollectJobsAndStatus() {
+    let data = {};
+    categorys.forEach(category => {
+        let title = category.querySelector("h2").textContent.trim();
+        let jobs = category.querySelectorAll(".job");
+        data[title] = [];
+        jobs.forEach(job => {
+            let jobTitle = job.querySelector("h4").textContent.trim();
+            if (job.classList.contains("checked")) {
+                data[title].push({ [jobTitle]: true });
+            } else {
+                data[title].push({ [jobTitle]: false });
+            }
+        });
+    });
+    // return the object
+    return data;
+}
+console.log(CollectJobsAndStatus());
