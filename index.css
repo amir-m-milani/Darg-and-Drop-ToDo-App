@@ -13,7 +13,12 @@ main {
     min-height: 100vh;
 }
 
-.add-button {
+.buttons-container {
+    display: flex;
+    gap: 10px;
+}
+
+.button-part {
     display: flex;
     width: 272px;
     padding: 10px 20px;
@@ -24,7 +29,7 @@ main {
     cursor: pointer;
 }
 
-.add-button span {
+.button-part span {
     color: #000;
     font-family: Sansita;
     font-size: 40px;
