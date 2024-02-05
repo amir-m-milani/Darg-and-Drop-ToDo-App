@@ -1,14 +1,16 @@
-const addButton = document.querySelector(".add-button");
+const addButton = document.querySelector(".button-part.add-button");
 const closeModal = document.querySelector(".modal_ .main .close");
 const insertJobButton = document.querySelector(".submit-button");
 const jobs = document.querySelectorAll(".job");
 const jobsConatainers = document.querySelectorAll(".jobs");
 const checkBoxes = document.querySelectorAll(".check-box");
 const categorys = document.querySelectorAll(".category");
+const saveButton = document.querySelector(".save-button");
 
 addButton.addEventListener("click", OpenModal);
 closeModal.addEventListener("click", CloseModal);
 insertJobButton.addEventListener("click", AddJob);
+saveButton.addEventListener("click", SaveJobs);
 checkBoxes.forEach((checkBox, index) => {
     checkBox.addEventListener("click", () => {
         // check if the job is checked or not
@@ -46,6 +48,10 @@ jobsConatainers.forEach(jobContainer => {
         jobContainer.appendChild(darggingJob);
     });
 });
+
+function SaveJobs() {
+    SendJobsToDatabase();
+}
 
 function OpenModal() {
     document.querySelector(".overlay").classList.remove("d-none");
@@ -109,4 +115,37 @@ function CollectJobsAndStatus() {
     // return the object
     return data;
 }
-console.log(CollectJobsAndStatus());
+
+function SendJobsToDatabase() {
+    const data = CollectJobsAndStatus();
+    let xhrRequest = new XMLHttpRequest();
+    xhrRequest.open("POST", "database.php", true);
+    xhrRequest.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+    xhrRequest.onreadystatechange = function () {
+        switch (xhrRequest.readyState) {
+            case XMLHttpRequest.UNSENT:
+                console.log("Request has not been opened yet.");
+                break;
+            case XMLHttpRequest.OPENED:
+                console.log("Connection is not yet established.");
+                break;
+            case XMLHttpRequest.HEADERS_RECEIVED:
+                console.log("Headers and status are available.");
+                break;
+            case XMLHttpRequest.LOADING:
+                console.log("Downloading; response data is being received.");
+                break;
+            case XMLHttpRequest.DONE:
+                console.log("Operation is complete.");
+                if (xhrRequest.status === 200) {
+                    console.log(xhrRequest.responseText);
+                    console.log(xhrRequest.response);
+                } else {
+                    console.error("Error occurred during the request.");
+                }
+                break;
+        }
+    };
+    xhrRequest.send(JSON.stringify(data));
+}
