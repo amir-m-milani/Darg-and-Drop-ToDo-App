@@ -15,7 +15,11 @@ jobs:
               uses: actions/checkout@v4
               with:
                 ref: main
-            - name: list all the branches
+            - name: list 1 all the branches 
+              run: git branch --list 
+            - name: git fetch branches
+              run: git fetch
+            - name: list 2 all the branches
               run: git branch --list 
             - name: checkout to dev
               run: git checkout dev
